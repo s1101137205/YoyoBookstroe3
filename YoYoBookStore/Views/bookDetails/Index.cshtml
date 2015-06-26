@@ -1,0 +1,60 @@
+﻿@model IEnumerable<YoYoBookStore.Models.bookDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+                      <div class="breadcrumb alert-warning ">
+                          <img src="~/img/lend_03.png" height="350" width="1100">
+                      </div>
+<p>
+    <a class="btn btn-default" href="/bookDetails/Create">新增借閱</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            會員編號
+        </th>
+        <th>
+            書名編號
+        </th>
+        <th>
+            日期
+        </th>
+        <th>
+            書名
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            選項
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.member_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.book_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.book.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member.name)
+        </td>
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { id=item.id }) |
+            @Html.ActionLink("明細", "Details", new { id=item.id }) |
+            @Html.ActionLink("刪除", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

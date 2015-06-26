@@ -1,0 +1,61 @@
+﻿@model IEnumerable<YoYoBookStore.Models.member>
+
+@{
+    ViewBag.Title = "幼幼書坊-會員登入";
+}
+<h1></h1>
+<div class="breadcrumb alert-warning ">
+        <img src="~/img/member_03.png" height="350" width="1100">
+</div>  <a class="btn btn-default" href="/members/Create">註冊會員</a>
+<div class="panel panel-default">
+    <table class="table">
+        <tr >
+            <th>
+                會員編號
+            </th>
+            <th>
+                姓名
+            </th>
+            <th>
+                性別
+            </th>
+            <th>
+                聯絡電話
+            </th>
+            <th>
+                選項
+            </th>
+        </tr>
+        @{
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr class="panel-heading">
+                <td>
+                    @{
+                        i++;
+                        Output.WriteLine(i);
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tel)
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("明細", "Details", new { id = item.id }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+</div>

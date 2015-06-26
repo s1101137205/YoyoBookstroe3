@@ -1,0 +1,63 @@
+﻿@model IEnumerable<YoYoBookStore.Models.book>
+
+@{
+    ViewBag.Title = "在館藏書";
+}
+
+<div class="breadcrumb alert-warning ">
+    <img src="~/img/bookin_03.png" height="350" width="1100">
+</div>
+
+<div class="panel panel-default">
+    <table class="table">
+        <tr>
+
+            <th>
+                書目編號
+            </th>
+            <th>
+                書名
+            </th>
+            <th>
+                作者
+            </th>
+            <th>
+                出借狀況
+            </th>
+            <th>
+                選項
+            </th>
+        </tr>
+        @{
+            int i = 0;
+        }
+        @foreach (var item in Model)
+        {
+            <tr class="panel-heading">
+                <td>
+                    @{
+            i++;
+            Output.WriteLine(i);
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status)
+                </td>
+                <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("明細", "Details", new { id = item.id }) |
+                    @Html.ActionLink("刪除", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
